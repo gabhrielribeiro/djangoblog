@@ -22,12 +22,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)!#z$g$7p)gn%dlyizo0#(0z$nbiy6-gd@85c4*e127%(jz2y$'
+TOKEN_CSRF = os.getenv('TOKEN_CSRF')
+if TOKEN_CSRF:
+    SECRET_KEY = TOKEN_CSRF
+    CSRF_TRUSTED_ORIGINS = ['https://djangoblog-production-3fa2.up.railway.app']
+else:
+    SECRET_KEY = 'django-insecure-)!#z$g$7p)gn%dlyizo0#(0z$nbiy6-gd@85c4*e127%(jz2y$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['djangoblog-production-3fa2.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition

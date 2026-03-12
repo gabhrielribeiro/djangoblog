@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+  <main class="admin-page">
+        <div class="container">
+            <header class="admin-header">
+                <div class="admin-header__top">
+                    <a href="{% url 'home' %}" class="admin-header__back">← Voltar ao blog</a>
+                    <h1 class="admin-header__title">Painel Admin</h1>
+                    <p class="admin-header__subtitle">Gerencie os posts do blog</p>
+                </div>
+                <a href="{% url 'novo_post' %}" class="btn btn--primary">
+                    + Novo post
+                </a>
+                
+
+                <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                 <button class="btn btn--primary--black" type="submit">Sair</button>
+                </form>
+            </header>
+
+            <div class="admin-posts">
+                <table class="admin-table" aria-label="Lista de posts">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Destaque</th>
+                            <th>Data</th>
+                            <th>Tempo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-posts-list">
+                        {% for i in post %}
+                      <tr>
+                         <td data-label="Título">
+                            <strong>{{i.titulo}}</strong>
+                         </td>
+                         <td data-label="Categoria"><span class="admin-table__badge">{{i.categoria}}</span></td>
+                         <td data-label="Destaque"><span class="admin-table__yes">
+                            {% if i.destaque %}
+                             Sim
+                            {% else %}
+                             <p style="color:rgb(0, 0, 0); font-weight: normal;" >Não</p>
+                            {% endif %}
+                        
+                        </td>
+                         <td data-label="Data">{{i.data_postagem}}</td>
+                         <td data-label="Tempo">{{i.tempo_leitura}} minutos</td>
+                        <td data-label="Ações">
+                          <a href="{% url 'editar_post' i.slug %}" class="admin-table__btn admin-table__btn--edit" >Editar</a>
+                        
+                         <a href="{% url 'deletar' i.slug %}" 
+   class="admin-table__btn admin-table__btn--delete" onclick="return confirm('Tem certeza que deseja excluir este post?')">
+   Excluir
+</a>
+                         </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <p class="admin-empty" id="admin-empty" style="display: none;">
+                    Nenhum post cadastrado. <a href="admin-post.html">Criar primeiro post</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock 'content' %}
+    

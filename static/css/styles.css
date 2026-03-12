@@ -1,0 +1,1522 @@
+/* ============================================
+   Django para Iniciantes - Blog Styles
+   Paleta inspirada no branding Django
+   ============================================ */
+
+:root {
+  /* Cores Django - Referência oficial */
+  --django-dark: #092E20;
+  --django-green: #44B78B;
+  --django-green-hover: #3da37a;
+  --django-green-light: #5dd4a8;
+  --django-mint: #C9F0DD;
+  --django-mint-light: #E8FAF2;
+  --django-cream: #F7FDF9;
+  
+  /* Neutros */
+  --gray-900: #1a1f1c;
+  --gray-700: #2d3632;
+  --gray-500: #6b7a73;
+  --gray-400: #8f9d95;
+  --gray-300: #b5c0b9;
+  --gray-100: #e8ecea;
+  --white: #ffffff;
+  
+  /* Tipografia */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Espaçamento */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Bordas */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(9, 46, 32, 0.06);
+  --shadow-md: 0 4px 20px rgba(9, 46, 32, 0.08);
+  --shadow-lg: 0 8px 40px rgba(9, 46, 32, 0.1);
+  
+  /* Transições */
+  --transition: 0.2s ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-900);
+  background: var(--django-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--django-green);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--django-green-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--narrow {
+  max-width: 720px;
+}
+
+/* ========== Header ========== */
+.header {
+  background: var(--django-dark);
+  color: var(--white);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--white);
+  transition: opacity var(--transition);
+}
+
+.logo:hover {
+  opacity: 0.9;
+  color: var(--white);
+}
+
+.logo__bracket {
+  color: var(--django-green);
+}
+
+.logo__tag {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--django-mint);
+  margin-left: var(--space-sm);
+}
+
+.logo--footer .logo__tag {
+  color: var(--gray-400);
+}
+
+/* Nav */
+.nav__menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-xl);
+}
+
+.nav__menu a {
+  color: var(--django-mint);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav__menu a:hover {
+  color: var(--white);
+}
+
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-sm);
+}
+
+.nav__toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--django-mint);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ========== Hero ========== */
+.hero {
+  position: relative;
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(135deg, var(--django-dark) 0%, #0d3d2d 50%, #124a38 100%);
+  color: var(--white);
+  overflow: hidden;
+}
+
+.hero__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(68, 183, 139, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(201, 240, 221, 0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(68, 183, 139, 0.2);
+  border: 1px solid rgba(68, 183, 139, 0.4);
+  border-radius: var(--radius-sm);
+  color: var(--django-mint);
+  margin-bottom: var(--space-xl);
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+}
+
+.hero__title em {
+  color: var(--django-green-light);
+  font-style: normal;
+}
+
+.hero__subtitle {
+  font-size: 1.15rem;
+  color: var(--django-mint);
+  line-height: 1.7;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn--primary {
+  background: var(--django-green);
+  color: var(--django-dark);
+}
+
+.btn--primary--black {
+  background-color:var(--django-cream);
+  color: var(--django-dark);
+}
+
+.btn--primary:hover {
+  background: var(--django-green-hover);
+  color: var(--django-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--django-mint);
+  border: 2px solid var(--django-mint);
+}
+
+.btn--secondary:hover {
+  background: rgba(201, 240, 221, 0.1);
+  color: var(--white);
+  border-color: var(--white);
+}
+
+/* ========== Sections ========== */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+.section--alt {
+  background: var(--django-mint-light);
+}
+
+.section--cta {
+  padding: var(--space-2xl) 0;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--django-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.section__subtitle {
+  color: var(--gray-500);
+  font-size: 1rem;
+}
+
+.section__link {
+  display: inline-block;
+  margin-top: var(--space-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.section__link:hover {
+  text-decoration: underline;
+}
+
+/* ========== Cards ========== */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--gray-100);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card--featured {
+  grid-column: 1 / -1;
+  border-left: 4px solid var(--django-green);
+}
+
+.card__label {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+}
+
+
+.card__content {
+  padding: var(--space-xl);
+  position: relative;
+}
+
+.card--featured .card__content {
+  padding: var(--space-2xl);
+}
+
+.card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+
+.card__title a {
+  color: var(--gray-900);
+}
+
+.card__title a:hover {
+  color: var(--django-green);
+}
+
+.card__excerpt {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+.card__meta {
+  display: flex;
+  gap: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+/* ========== Concepts ========== */
+.concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-xl);
+}
+
+.concept-card {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.concept-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--django-mint);
+}
+
+.concept-card__icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--django-dark);
+  color: var(--django-green);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+}
+
+.concept-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--django-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.concept-card p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ========== Posts List ========== */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.post-preview {
+  background: var(--white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.post-preview:hover {
+  border-color: var(--django-mint);
+  box-shadow: var(--shadow-sm);
+}
+
+.post-preview__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.post-preview__label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+}
+
+.post-preview__meta time {
+  font-size: 0.9rem;
+  color: var(--gray-400);
+}
+
+.post-preview__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.post-preview__title a {
+  color: var(--gray-900);
+}
+
+.post-preview__title a:hover {
+  color: var(--django-green);
+}
+
+.post-preview__excerpt {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.post-preview__read {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+/* ========== Page Hero (páginas internas) ========== */
+.page-hero {
+  background: linear-gradient(135deg, var(--django-dark) 0%, #0d3d2d 100%);
+  color: var(--white);
+  padding: var(--space-2xl) 0;
+}
+
+.page-hero__back {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: var(--django-mint);
+  margin-bottom: var(--space-lg);
+}
+
+.page-hero__back:hover {
+  color: var(--white);
+}
+
+.page-hero__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.page-hero__title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.page-hero__meta {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--django-mint);
+}
+
+.page-hero__meta span::before {
+  content: "•";
+  margin: 0 var(--space-sm);
+  color: rgba(201, 240, 221, 0.7);
+}
+
+.page-hero__subtitle {
+  color: var(--django-mint);
+  font-size: 1.05rem;
+  max-width: 560px;
+}
+
+/* ========== CTA Box ========== */
+.cta-box {
+  background: var(--django-dark);
+  color: var(--white);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+}
+
+.cta-box__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.cta-box__text {
+  color: var(--django-mint);
+  font-size: 0.95rem;
+}
+
+.cta-box__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 280px;
+  max-width: 420px;
+}
+
+.cta-box__form input {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--django-mint);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--gray-900);
+}
+
+.cta-box__form input::placeholder {
+  color: var(--gray-400);
+}
+
+.cta-box__form input:focus {
+  outline: none;
+  border-color: var(--django-green);
+}
+
+.cta-box__form .btn--primary {
+  background: var(--django-green);
+  color: var(--django-dark);
+}
+
+.cta-box__form .btn--primary:hover {
+  background: var(--django-green-light);
+}
+
+/* ========== Footer ========== */
+.footer {
+  background: var(--gray-900);
+  color: var(--gray-300);
+  padding: var(--space-3xl) 0 var(--space-xl);
+  margin-top: var(--space-3xl);
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.footer__brand .logo {
+  margin-bottom: var(--space-md);
+}
+
+.footer__brand p {
+  font-size: 0.95rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+.footer__links h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--django-mint);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__links ul {
+  list-style: none;
+}
+
+.footer__links li {
+  margin-bottom: var(--space-sm);
+}
+
+.footer__links a {
+  color: var(--gray-400);
+}
+
+.footer__links a:hover {
+  color: var(--django-mint);
+}
+
+.footer__bottom {
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-700);
+  text-align: center;
+}
+
+.footer__bottom p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+/* ========== Post Page ========== */
+.post-page {
+  padding: var(--space-2xl) 0 var(--space-3xl);
+  min-height: 60vh;
+}
+
+.post-back {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: var(--space-xl);
+  color: var(--gray-500);
+}
+
+.post-back:hover {
+  color: var(--django-green);
+}
+
+.post-article {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) 0;
+  margin: 0 auto var(--space-2xl);
+  max-width: 800px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+}
+
+.post-page .container {
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+}
+
+.post-header {
+  padding-bottom: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.post-header__label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.post-header__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--django-dark);
+  line-height: 1.3;
+  margin-bottom: var(--space-md);
+}
+
+.post-header__meta {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
+
+.post-header__meta span::before {
+  content: "•";
+  margin: 0 var(--space-sm);
+  color: var(--gray-400);
+}
+
+.post-header__desc {
+  font-size: 1.05rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin-top: var(--space-sm);
+}
+
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.post-content p {
+  margin-bottom: var(--space-lg);
+}
+
+.post-content h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--django-dark);
+  margin: var(--space-2xl) 0 var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--django-mint);
+}
+
+.post-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin: var(--space-xl) 0 var(--space-sm);
+}
+
+.post-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  background: var(--django-mint-light);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+}
+
+.post-content pre {
+  margin: var(--space-lg) 0;
+  padding: var(--space-lg);
+  background: var(--django-dark);
+  color: var(--django-mint);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.post-content strong {
+  color: var(--django-dark);
+}
+
+.post-cta {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.post-cta h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--django-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.post-cta p {
+  color: var(--gray-500);
+}
+
+/* Lista de tutoriais dentro do card (congruente com post) */
+.post-content--list .tutorial-item__title {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.tutorial-item {
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.tutorial-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tutorial-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.tutorial-item__label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+}
+
+.tutorial-item__meta time {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+.tutorial-item__read {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+.tutorial-item__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+
+.tutorial-item__title a {
+  color: var(--gray-900);
+}
+
+.tutorial-item__title a:hover {
+  color: var(--django-green);
+}
+
+.tutorial-item__excerpt {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+.cta-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-lg);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-inline input {
+  flex: 1;
+  min-width: 180px;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.cta-inline input:focus {
+  outline: none;
+  border-color: var(--django-green);
+}
+
+/* Barra de busca - página tutoriais */
+.tutorial-search {
+  margin-top: var(--space-xl);
+}
+
+.tutorial-search input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.tutorial-search input::placeholder {
+  color: var(--gray-400);
+}
+
+.tutorial-search input:focus {
+  outline: none;
+  border-color: var(--django-green);
+}
+
+/* Paginação */
+.pagination {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-100);
+}
+
+.pagination__numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.pagination__btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--space-md);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  background: var(--white);
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pagination__btn:hover {
+  border-color: var(--django-mint);
+  color: var(--django-dark);
+}
+
+.pagination__btn--active {
+  background: var(--django-green);
+  border-color: var(--django-green);
+  color: var(--django-dark);
+}
+
+.pagination__btn--active:hover {
+  background: var(--django-green-hover);
+  border-color: var(--django-green-hover);
+  color: var(--django-dark);
+}
+
+.tutorial-empty {
+  margin-top: var(--space-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--gray-500);
+  background: var(--django-mint-light);
+  border-radius: var(--radius-md);
+}
+
+.post-cta p {
+  color: var(--gray-500);
+  margin-bottom: var(--space-lg);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__menu {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--django-dark);
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: var(--space-md);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav__menu[data-open="true"] {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .card--featured {
+    grid-template-columns: 1fr;
+  }
+
+  .card--featured .card__label {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+  }
+
+  .footer__content {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-box {
+    flex-direction: column;
+  }
+
+  .cta-box__form {
+    max-width: none;
+    width: 100%;
+  }
+
+  .cta-box__form input {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__cta {
+    flex-direction: column;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== Login Page ========== */
+.hero--login {
+  padding: var(--space-3xl) 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero__content--login {
+  max-width: 520px;
+}
+
+.login-card {
+  background: var(--white);
+  padding: var(--space-3xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(201, 240, 221, 0.3);
+  max-width: 100%;
+}
+
+.login-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--django-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.login-card__subtitle {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  margin-bottom: var(--space-xl);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.login-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.login-form__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.login-form__input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  color: var(--gray-900);
+  transition: border-color var(--transition);
+}
+
+.login-form__input::placeholder {
+  color: var(--gray-400);
+}
+
+.login-form__input:focus {
+  outline: none;
+  border-color: var(--django-green);
+}
+
+.login-form__link {
+  font-size: 0.85rem;
+  color: var(--django-green);
+}
+
+.login-form__link:hover {
+  text-decoration: underline;
+}
+
+.btn--full {
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  margin-top: var(--space-sm);
+}
+
+.login-card__footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-100);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--gray-500);
+}
+
+.login-card__footer a {
+  font-weight: 600;
+}
+
+/* ========== Painel Admin ========== */
+.admin-page {
+  min-height: 100vh;
+  background: var(--django-cream);
+  padding: var(--space-2xl) 0 var(--space-3xl);
+}
+
+.admin-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.admin-header__top {
+  flex: 1;
+}
+
+.admin-header__back {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: var(--django-green);
+  margin-bottom: var(--space-md);
+}
+
+.admin-header__back:hover {
+  text-decoration: underline;
+}
+
+.admin-header__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--django-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.admin-header__subtitle {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+}
+
+.admin-posts {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+  overflow: hidden;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.admin-table th {
+  background: var(--django-mint-light);
+  font-weight: 600;
+  color: var(--django-dark);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.admin-table tbody tr:hover {
+  background: var(--django-cream);
+}
+
+.admin-table__badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--django-mint);
+  color: var(--django-dark);
+  border-radius: var(--radius-sm);
+}
+
+.admin-table__yes {
+  color: var(--django-green);
+  font-weight: 600;
+}
+
+.admin-table__btn {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  margin-right: var(--space-sm);
+  transition: all var(--transition);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-decoration: none;
+}
+
+.admin-table__btn--edit {
+  background: var(--django-mint);
+  color: var(--django-dark);
+}
+
+.admin-table__btn--edit:hover {
+  background: var(--django-green);
+  color: var(--django-dark);
+}
+
+.admin-table__btn--delete {
+  background: transparent;
+  color: var(--gray-500);
+  border: 1px solid var(--gray-300);
+}
+
+.admin-table__btn--delete:hover {
+  background: #fee;
+  color: #c33;
+  border-color: #c33;
+}
+
+.admin-empty {
+  padding: var(--space-2xl);
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.admin-empty a {
+  font-weight: 600;
+}
+
+/* Admin Form - Criar/Editar post */
+.admin-page--form .admin-header {
+  margin-bottom: var(--space-xl);
+}
+
+.admin-form {
+  background: var(--white);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-100);
+}
+
+.admin-form__field {
+  margin-bottom: var(--space-xl);
+}
+
+.admin-form__field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: var(--space-sm);
+}
+
+.admin-form__field input[type="text"],
+.admin-form__field input[type="email"],
+.admin-form__field select,
+.admin-form__field textarea {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  background: var(--white);
+  color: var(--gray-900);
+  transition: border-color var(--transition);
+}
+
+.admin-form__field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-form__field input:focus,
+.admin-form__field select:focus,
+.admin-form__field textarea:focus {
+  outline: none;
+  border-color: var(--django-green);
+}
+
+.admin-form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  align-items: flex-end;
+}
+
+.admin-form__row .admin-form__field {
+  flex: 1;
+  min-width: 180px;
+}
+
+.admin-form__field--checkbox {
+  margin-bottom: var(--space-xl);
+}
+
+.admin-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.admin-form__checkbox-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--django-green);
+}
+
+.admin-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--gray-100);
+}
+
+@media (max-width: 768px) {
+  .admin-table {
+    display: block;
+  }
+
+  .admin-table thead {
+    display: none;
+  }
+
+  .admin-table tbody tr {
+    display: block;
+    padding: var(--space-lg);
+    border-bottom: 2px solid var(--gray-100);
+  }
+
+  .admin-table td {
+    display: block;
+    padding: var(--space-sm) 0;
+    border: none;
+  }
+
+  .admin-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .admin-table td:first-child {
+    padding-top: 0;
+    font-size: 1rem;
+  }
+
+  .admin-table td:last-child {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--gray-100);
+    margin-top: var(--space-sm);
+  }
+
+  .cta-box{
+
+      align-items: flex-start;
+
+    }
+}
+
+@media (max-width: 375px) {
+    /* CSS para celulares pequenos */
+
+    .cta-box{
+
+      padding: 20px;
+      flex-direction: row;
+
+    }
+
+    cta-box__form input{
+
+      flex: none;
+    }
+
+
+    .login-card{
+      padding:25px;
+
+    }
+
+    .admin-form{
+      padding: 20px;
+    }
+
+   
+
+    .cta-box__form{
+          min-width: 0px;
+    }
+}

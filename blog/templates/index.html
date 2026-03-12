@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+
+
+
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+<!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="{% url 'home' %}" class="logo">
+                <span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+                <span class="logo__tag">para Iniciantes</span>
+            </a>
+            <nav class="nav" aria-label="Menu principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="{% url 'posts' %}">Tutoriais</a></li>
+                    <li><a href="#conceitos">Conceitos</a></li>
+                    
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="hero__bg-pattern" aria-hidden="true"></div>
+        <div class="container hero__content">
+            <div class="hero__badge">
+                <code>pip install django</code>
+            </div>
+            <h1 class="hero__title">
+                Aprenda Django do <em>Zero</em>
+            </h1>
+            <p class="hero__subtitle">
+                O framework web Python para quem quer criar aplicações robustas, seguras e escaláveis. 
+                Tutoriais práticos e didáticos para iniciantes.
+            </p>
+            <div class="hero__cta">
+                <a href="#tutoriais" class="btn btn--primary">Começar Agora</a>
+                <a href="#conceitos" class="btn btn--secondary">Ver Conceitos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts em Destaque -->
+    <section class="section" id="tutoriais">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Tutoriais em Destaque</h2>
+                <p class="section__subtitle">Conteúdo escolhido para você começar sua jornada com Django</p>
+                <a href="{% url 'posts' %}" class="section__link">Ver todos os tutoriais →</a>
+            </div>
+            <div class="posts-grid">
+
+    {# 1º destaque = card grande #}
+    {% if post_destaque %}
+        {% for post in post_destaque %}
+            {% if forloop.first %}
+            <article class="card card--featured">
+                <div class="card__label">{{ post.categoria|default:"Iniciante" }}</div>
+                <div class="card__content">
+                    <h3 class="card__title">
+                        <a href="{% url 'post' post.slug %}">{{ post.titulo }}</a>
+                    </h3>
+                    <p class="card__excerpt">
+                        {{ post.desc }}
+                    </p>
+                    <div class="card__meta">
+                        <span class="card__date">{{ post.data_postagem|date:"d M Y" }}</span>
+                        <span class="card__read">{{ post.tempo_leitura }} min</span>
+                    </div>
+                </div>
+            </article>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# restantes = cards pequenos #}
+    {% for post in post_destaque %}
+        {% if not forloop.first %}
+        <article class="card">
+            <div class="card__label">{{ post.categoria|default:"Conceitos" }}</div>
+            <div class="card__content">
+                <h3 class="card__title">
+                    <a href="{% url 'post' post.slug %}">{{ post.titulo }}</a>
+                </h3>
+                <p class="card__excerpt">
+                    {{ post.desc }}
+                </p>
+                <div class="card__meta">
+                    <span class="card__date">{{ post.data_postagem|date:"d M Y" }}</span>
+                    <span class="card__read">{{ post.tempo_leitura }} min</span>
+                </div>
+            </div>
+        </article>
+        {% endif %}
+    {% endfor %}
+
+</div>
+        </div>
+    </section>
+
+    <!-- Conceitos -->
+    <section class="section section--alt" id="conceitos">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Conceitos Fundamentais</h2>
+                <p class="section__subtitle">Base teórica para você dominar o framework</p>
+            </div>
+            <div class="concepts-grid">
+              
+                <div class="concept-card">
+                    <div class="concept-card__icon">
+                        <code>V</code>
+                    </div>
+                    <h3>Views</h3>
+                    <p>Lógica que processa requisições e retorna respostas. Funções ou classes reutilizáveis.</p>
+                </div>
+
+                  
+                <div class="concept-card">
+                    <div class="concept-card__icon">
+                        <code>T</code>
+                    </div>
+                    <h3>Templates</h3>
+                    <p>HTML dinâmico com a linguagem de templates do Django. Separação clara de lógica e apresentação.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-card__icon">
+                        <code>M</code>
+                    </div>
+                    <h3>Models</h3>
+                    <p>Defina a estrutura dos seus dados. ORM poderoso que traduz Python em SQL.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Últimos Posts -->
+    <section class="section" id="projetos">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Últimos Artigos</h2>
+                <p class="section__subtitle">Conteúdo fresh do blog</p>
+            </div>
+            <div class="posts-list">
+                {% if outros_posts %}
+                {% for post in outros_posts %}
+                <article class="post-preview">
+                    <div class="post-preview__meta">
+                        <span class="post-preview__label">{{post.categoria}}</span>
+                        <time datetime="2025-03-01">{{post.data_postagem }}</time>
+                    </div>
+                    <h3 class="post-preview__title">
+                        <a href="{% url 'post' post.slug %}">{{post.titulo}}</a>
+                    </h3>
+                    <p class="post-preview__excerpt">
+                        {{post.desc}}
+                    </p>
+                </article>
+                {% endfor %}
+                {% endif %}
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Newsletter -->
+    <section class="section section--cta">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-box__content">
+                    <h2 class="cta-box__title">Não perca nenhum tutorial</h2>
+                    <p class="cta-box__text">Receba os novos artigos sobre Django direto no seu email.</p>
+                </div>
+                <form class="cta-box__form" id="newsletter-form">
+                    <input type="email" placeholder="seu@email.com" required aria-label="Seu email">
+                    <button type="submit" class="btn btn--primary">Inscrever</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="sobre">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <a href="index.html" class="logo logo--footer">
+                        <span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+                        <span class="logo__tag">para Iniciantes</span>
+                    </a>
+                    <p>Blog educativo focado em ensinar Django para quem está começando.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="{% url 'posts' %}">Tutoriais</a></li>
+                        <li><a href="#conceitos">Conceitos</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="https://docs.djangoproject.com/" target="_blank" rel="noopener">Documentação Django</a></li>
+                        <li><a href="https://www.djangoproject.com/" target="_blank" rel="noopener">Site Oficial</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Django para Iniciantes. Feito com Python &amp; Django.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+{% endblock 'content' %}
+    

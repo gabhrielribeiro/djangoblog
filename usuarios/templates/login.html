@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+ <!-- Login -->
+    <section class="hero hero--login">
+        <div class="hero__bg-pattern" aria-hidden="true"></div>
+        <div class="container hero__content hero__content--login">
+            <div class="login-card">
+                <h1 class="login-card__title">Painel Admin</h1>
+                <p class="login-card__subtitle">Acesse sua conta para gerenciar e publicar conteúdos do blog.</p>
+                
+                <form class="login-form" id="login-form" method="POST" action="{% url 'login'%}">
+                    {% if messages %}
+    {% for message in messages %}
+        <div class="rounded-md {{ message.tags }} mt-4">
+            <div class="flex">
+                <p class="ml-3 py-4" style="color:red;">{{ message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+                    {% csrf_token %}
+                    <div class="login-form__field">
+                        <label for="email" class="login-form__label">Usuário</label>
+                        <input type="text" id="text" name="usuario" class="login-form__input" placeholder="" required autocomplete="username" aria-label="Email ou usuário">
+                    </div>
+                    <div class="login-form__field">
+                        <label for="password" class="login-form__label">Senha</label>
+                        <input type="password" id="password" name="password" class="login-form__input" placeholder="••••••••" required autocomplete="current-password" aria-label="Senha">
+                        <a href="#" class="login-form__link">Esqueceu a senha?</a>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">Entrar</button>
+                </form>
+
+                
+            </div>
+        </div>
+    </section>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock 'content' %}
+    

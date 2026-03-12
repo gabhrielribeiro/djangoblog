@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block 'titulo' %}
+Todos os Tutoriais | Django para Iniciantes
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+<!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="{% url 'home' %}" class="logo">
+                <span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+                <span class="logo__tag">para Iniciantes</span>
+            </a>
+            <nav class="nav" aria-label="Menu principal">
+                <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__menu" id="nav-menu">
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'posts' %}">Tutoriais</a></li>
+                    <li><a href="{% url 'home' %}#conceitos">Conceitos</a></li>
+                    
+                    <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Estrutura igual à post: card branco com conteúdo -->
+    <main class="post-page">
+        <article class="post-article">
+            <div class="container container--narrow">
+                <a href="{% url 'home' %}" class="post-back">← Voltar ao início</a>
+
+                <header class="post-header">
+                    <span class="post-header__label">Tutoriais</span>
+                    <h1 class="post-header__title">Todos os Tutoriais</h1>
+                    <p class="post-header__desc">
+                        Conteúdo completo para sua jornada de aprendizado em Django. Do básico ao avançado.
+                    </p>
+                    <div class="tutorial-search">
+                        <input type="search" id="tutorial-search" placeholder="Buscar tutoriais..." aria-label="Buscar tutoriais" autocomplete="off">
+                    </div>
+                </header>
+
+                <div class="post-content post-content--list" id="tutorial-list">
+                    {% if posts %}
+                    {% for post in posts %}
+
+                    <article class="tutorial-item" data-search="{{post.titulo}}">
+                        <div class="tutorial-item__meta">
+                            <span class="tutorial-item__label">{{post.categoria}}</span>
+                            <time datetime="2025-03-03">{{post.data_postagem}}</time>
+                            <span class="tutorial-item__read">{{post.tempo_leitura}}</span>
+                        </div>
+                        <h2 class="tutorial-item__title">
+                            <a href="{% url 'post' post.slug %}">{{post.titulo}}</a>
+                        </h2>
+                        <p class="tutorial-item__excerpt">
+                            {{post.desc}}
+                        </p>
+                    </article>
+                    {% endfor %}
+                    {% endif %}
+
+                    
+                </div>
+
+                <p class="tutorial-empty" id="tutorial-empty" style="display: none;">
+                    Nenhum tutorial encontrado. Tente outros termos na busca.
+                </p>
+                <nav class="pagination" id="pagination" aria-label="Navegação entre páginas">
+                    <div class="pagination__numbers" id="pagination-numbers"></div>
+                </nav>
+            </div>
+        </article>
+
+        <!-- CTA -->
+        <section class="section section--alt">
+            <div class="container">
+                <div class="post-cta">
+                    <h2>Quer mais conteúdo?</h2>
+                    <p>Receba os novos artigos sobre Django direto no seu email.</p>
+                    <form class="cta-inline" id="newsletter-form" aria-label="Newsletter">
+                        <input type="email" placeholder="seu@email.com" required aria-label="Seu email">
+                        <button type="submit" class="btn btn--primary">Inscrever</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="sobre">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <a href="index.html" class="logo logo--footer">
+                        <span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+                        <span class="logo__tag">para Iniciantes</span>
+                    </a>
+                    <p>Blog educativo focado em ensinar Django para quem está começando.</p>
+                </div>
+                <div class="footer__links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="tutoriais-lista.html">Tutoriais</a></li>
+                        <li><a href="index.html#conceitos">Conceitos</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="https://docs.djangoproject.com/" target="_blank" rel="noopener">Documentação Django</a></li>
+                        <li><a href="https://www.djangoproject.com/" target="_blank" rel="noopener">Site Oficial</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Django para Iniciantes. Feito com Python &amp; Django.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    
+    
+{% endblock 'content' %}
+    

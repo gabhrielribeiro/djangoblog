@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+<header class="header">
+    <div class="container header__inner">
+        <a href="{% url 'home' %}" class="logo">
+            <span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+            <span class="logo__tag">para Iniciantes</span>
+        </a>
+
+        <nav class="nav" aria-label="Menu principal">
+            <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav__menu" id="nav-menu">
+                <li><a href="{% url 'home' %}">Início</a></li>
+                <li><a href="{% url 'posts' %}">Tutoriais</a></li>
+                <li><a href="{% url 'home' %}#conceitos">Conceitos</a></li>
+                
+                <li><a href="{% url 'home' %}#sobre">Sobre</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<main class="post-page">
+
+<article class="post-article">
+<div class="container container--narrow">
+
+<a href="{% url 'home' %}" class="post-back">
+← Voltar ao início
+</a>
+
+
+<header class="post-header">
+
+<span class="post-header__label">
+Tutorial
+</span>
+
+<h1 class="post-header__title">
+{{ post.titulo }}
+</h1>
+
+<div class="post-header__meta">
+
+<time datetime="{{ post.data_postagem|date:'Y-m-d' }}">
+{{ post.data_postagem|date:"d M Y" }}
+</time>
+
+<span>
+{{ post.tempo_leitura }} min de leitura
+</span>
+
+</div>
+
+</header>
+
+
+<div class="post-content">
+
+{{ post.content|safe }}
+
+</div>
+
+</div>
+</article>
+
+
+<section class="section section--alt">
+
+<div class="container">
+
+<div class="post-cta">
+
+<h2>
+Quer mais conteúdo?
+</h2>
+
+<p>
+Confira outros tutoriais e aprofunde seus conhecimentos em Django.
+</p>
+
+<a href="{% url 'home' %}#tutoriais" class="btn btn--primary">
+Ver todos os tutoriais
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="footer" id="sobre">
+
+<div class="container">
+
+<div class="footer__content">
+
+<div class="footer__brand">
+
+<a href="{% url 'home' %}" class="logo logo--footer">
+<span class="logo__bracket">&lt;</span>Django<span class="logo__bracket">/&gt;</span>
+<span class="logo__tag">para Iniciantes</span>
+</a>
+
+<p>
+Blog educativo focado em ensinar Django para quem está começando.
+</p>
+
+</div>
+
+
+<div class="footer__links">
+
+<h4>Navegação</h4>
+
+<ul>
+<li><a href="{% url 'home' %}#tutoriais">Tutoriais</a></li>
+<li><a href="{% url 'home' %}#conceitos">Conceitos</a></li>
+
+</ul>
+
+</div>
+
+
+<div class="footer__links">
+
+<h4>Recursos</h4>
+
+<ul>
+<li>
+<a href="https://docs.djangoproject.com/" target="_blank">
+Documentação Django
+</a>
+</li>
+
+<li>
+<a href="https://www.djangoproject.com/" target="_blank">
+Site Oficial
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="footer__bottom">
+
+<p>
+&copy; 2026 Django para Iniciantes. Feito com Python & Django.
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+    
+{% endblock 'content' %}
+    

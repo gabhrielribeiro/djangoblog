@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock 'head' %}
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+   <main class="admin-page admin-page--form">
+        <div class="container container--narrow">
+            <header class="admin-header admin-header--form">
+                <a href="{% url 'post' %}" class="admin-header__back">← Voltar ao painel</a>
+                <h1 class="admin-header__title" id="form-title">Editar post</h1>
+            </header>
+
+            <form class="admin-form" id="admin-post-form" method="POST">
+                {% csrf_token %}
+
+                <input type="hidden" id="post-id" name="id" value="{{ post.id }}">
+
+                <div class="admin-form__field">
+                    <label for="post-title">Título *</label>
+                    <input
+                        type="text"
+                        id="post-title"
+                        name="title"
+                        required
+                        placeholder="Título do post"
+                        value="{{ post.titulo }}"
+                    >
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-description">Descrição *</label>
+                    <textarea
+                        id="post-description"
+                        name="description"
+                        rows="3"
+                        required
+                        placeholder="Breve descrição ou resumo do post"
+                    >{{ post.desc }}</textarea>
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-content">Conteúdo *</label>
+                    <textarea
+                        id="post-content"
+                        name="content"
+                        rows="12"
+                        required
+                        placeholder="Conteúdo completo do post (HTML ou texto)"
+                    >{{ post.content }}</textarea>
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-time">Tempo de Leitura*</label>
+                    <input type="text" id="post-time" name="time_leitura" required placeholder="Tempo de Leitura"   value="{{ post.tempo_leitura}}">
+                </div>
+
+                <div class="admin-form__row">
+                    <div class="admin-form__field">
+                        <label for="post-category">Categoria *</label>
+                        <select id="post-category" name="category" required>
+                            <option value="">Selecione...</option>
+                            <option value="Iniciante" {% if post.categoria == "Iniciante" %}selected{% endif %}>Iniciante</option>
+                            <option value="Conceitos" {% if post.categoria == "Conceitos" %}selected{% endif %}>Conceitos</option>
+                            <option value="Prático" {% if post.categoria == "Prático" %}selected{% endif %}>Prático</option>
+                            <option value="Models" {% if post.categoria == "Models" %}selected{% endif %}>Models</option>
+                            <option value="Templates" {% if post.categoria == "Templates" %}selected{% endif %}>Templates</option>
+                            <option value="Views" {% if post.categoria == "Views" %}selected{% endif %}>Views</option>
+                            <option value="Admin" {% if post.categoria == "Admin" %}selected{% endif %}>Admin</option>
+                            <option value="URLs" {% if post.categoria == "URLs" %}selected{% endif %}>URLs</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-form__field admin-form__field--checkbox">
+                        <label class="admin-form__checkbox-label">
+                            <input
+                                type="checkbox"
+                                id="post-featured"
+                                name="featured"
+                                value="1"
+                                {% if post.destaque %}checked{% endif %}
+                            >
+                            <span>Post em destaque</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="admin-form__actions">
+                    <button type="submit" class="btn btn--primary">Salvar alterações</button>
+                    <a href="{% url 'post' %}" class="btn btn--secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock 'content' %}
+    

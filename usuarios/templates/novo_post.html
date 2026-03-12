@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock 'head' %}
+
+{% block 'titulo' %}
+Django Blog
+
+{% endblock 'titulo' %}
+    
+{% block 'content' %}
+  <main class="admin-page admin-page--form">
+        <div class="container container--narrow">
+            <header class="admin-header admin-header--form">
+                <a href="{% url 'post' %}" class="admin-header__back">← Voltar ao painel</a>
+                <h1 class="admin-header__title" id="form-title">Novo post</h1>
+            </header>
+
+            <form method="POST" class="admin-form" id="admin-post-form" action="{% url 'novo_post' %}">
+                {% csrf_token %}
+                <input type="hidden" id="post-id" name="id">
+                
+                <div class="admin-form__field">
+                    <label for="post-title">Título *</label>
+                    <input type="text" id="post-title" name="title" required placeholder="Título do post">
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-description">Descrição *</label>
+                    <textarea id="post-description" name="description" rows="3" required placeholder="Breve descrição ou resumo do post"></textarea>
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-content">Conteúdo *</label>
+                    <textarea id="post-content" name="content" rows="12" required placeholder="Conteúdo completo do post (HTML ou texto)"></textarea>
+                </div>
+
+                <div class="admin-form__field">
+                    <label for="post-time">Tempo de Leitura*</label>
+                    <input type="text" id="post-time" name="time_leitura" required placeholder="Tempo de Leitura">
+                </div>
+
+                <div class="admin-form__row">
+                    <div class="admin-form__field">
+                        <label for="post-category">Categoria *</label>
+                        <select id="post-category" name="category" required>
+                            <option value="">Selecione...</option>
+                            <option value="Iniciante">Iniciante</option>
+                            <option value="Conceitos">Conceitos</option>
+                            <option value="Prático">Prático</option>
+                            <option value="Models">Models</option>
+                            <option value="Templates">Templates</option>
+                            <option value="Views">Views</option>
+                            <option value="Admin">Admin</option>
+                            <option value="URLs">URLs</option>
+                        </select>
+                    </div>
+                    <div class="admin-form__field admin-form__field--checkbox">
+                        <label class="admin-form__checkbox-label">
+                            <input type="checkbox" id="post-featured" name="featured" value="1">
+                            <span>Post em destaque</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="admin-form__actions">
+                    <button type="submit" class="btn btn--primary">Salvar post</button>
+                    <a href="admin.html" class="btn btn--secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock 'content' %}
+    

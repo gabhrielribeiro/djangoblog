@@ -8,7 +8,7 @@ class Post(models.Model):
     data_postagem = models.DateField(auto_now_add=True)
     categoria = models.CharField(max_length=100)
     destaque = models.BooleanField(default=False)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     def __str__(self):
         return self.titulo

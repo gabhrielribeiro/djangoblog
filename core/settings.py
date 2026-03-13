@@ -30,7 +30,7 @@ else:
     SECRET_KEY = 'django-insecure-)!#z$g$7p)gn%dlyizo0#(0z$nbiy6-gd@85c4*e127%(jz2y$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['djangoblog-production-3fa2.up.railway.app', 'localhost', '127.0.0.1']
 
